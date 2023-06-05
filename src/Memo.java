@@ -45,6 +45,10 @@ public class Memo {
     public String getPost() {
         return post;
     }
+    public void setPost(String post){
+        this.post = post;
+        this.date = setDate();
+    }
 
     public String getDate(){
         return this.date;

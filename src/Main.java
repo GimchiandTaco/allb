@@ -34,8 +34,29 @@ public class Main {
                     System.out.println(str);
                     break;
 
-
                 case 3: // 수정기능
+                    System.out.println("수정할 메모 번호를 입력해주세요.");
+                    int updateMemoId = sc.nextInt();
+                    String prevPost = "";
+                    if(memoList.get(updateMemoId-1) != null){
+                        System.out.println("비밀번호를 입력해 주세요.");
+                        int pass = sc.nextInt();
+                        if(memoList.get(updateMemoId-1).password == pass){
+                            prevPost = memoList.get(updateMemoId-1).post;
+                            System.out.println(prevPost);
+                            System.out.println("수정할 내용을 입력해주세요.");
+                            sc.nextLine();
+                            String updatePost = sc.nextLine();
+                            memoList.get(updateMemoId-1).setPost(updatePost);
+                            System.out.println("수정이 완료되었습니다.");
+                        } else {
+                            System.out.println("비밀번호가 일치하지 않습니다.");
+                        }
+                    } else {
+                        System.out.println("번호를 잘못입력하셨습니다.");
+                    }
+                    break;
+
                 case 4: // 삭제기능
                     System.out.println("삭제할 글 번호를 입력해주세요");
                     int deleteId = sc.nextInt();
