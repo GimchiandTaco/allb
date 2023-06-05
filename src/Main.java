@@ -27,17 +27,47 @@ public class Main {
                     break;
                 case 2:
                     String str = "\n[ 메모 목록 ]\n";
-                    for (int i=0; i<memoList.size(); i++){
-                        str += (memoList.get(i).id + 1) + ". " + "작성자 : \t" + memoList.get(i).name + " 작성일 : " + memoList.get(i).date;
+                    for (int i = 0; i < memoList.size(); i++) {
+                        Memo a = memoList.get(i);
+                        str += (i + 1) + ". " + "작성자: " + a.getName() + " 작성일: " + a.getDate() + "\n";
                     }
                     System.out.println(str);
                     break;
+
+
                 case 3: // 수정기능
                 case 4: // 삭제기능
-                case 5:
+                    System.out.println("삭제할 글 번호를 입력해주세요");
+                    int deleteId = sc.nextInt();
+                    boolean found = false;
+
+                    for (int i = 0; i < memoList.size(); i++) {
+                        Memo m = memoList.get(i);
+                        if (m.getId() == deleteId - 1) {
+                            System.out.println("비밀번호를 입력해주세요");
+                            int deletePassword = sc.nextInt();
+                            if (deletePassword == m.getPassword()) {
+                                memoList.remove(i);
+                                System.out.println("작성글 번호" + deleteId + " 삭제처리 되었습니다.");
+                                found = true;
+                                break;
+                            } else {
+                                System.out.println("비밀번호가 일치하지 않습니다.");
+                                break;
+                            }
+                        }
+                    }
+
+                    if (!found) {
+                        System.out.println("해당 글은 존재하지 않습니다.");
+                    }
                     break;
+                case 5:
+                    // 종료
+                    return;
             }
         }
-
     }
 }
+
+

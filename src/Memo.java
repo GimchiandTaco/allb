@@ -34,6 +34,10 @@ public class Memo {
         return name;
     }
 
+    public int getPassword() {
+        return password;
+    }
+
     public void setPassword(int password) {
         this.password = password;
     }
